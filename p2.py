@@ -1,3 +1,4 @@
+# Detect system information and output it to console
 # Import sys library
 import sys
 
