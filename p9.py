@@ -11,5 +11,5 @@ year = str(exam_st_date[2])
 print("\nThe examination will start at: " +
       month + " / " + day + " / " + year + "\n")
 
-# Clear solution from example
+# Elegant solution from example
 print("\nThe examination will start at: %i / %i / %i\n" % exam_st_date)
