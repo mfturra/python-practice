@@ -1,11 +1,12 @@
+# Utilize internal library to output current date and time.
+# Import necessary libraries
 from datetime import datetime
 
-# Print date
-'''today = date.today()
+'''# Version 1: Print date
+today = date.today()
 print("Today's Date: ", today)'''
 
-# Print current date and time
-# Pull current date and time using library
+# Version 2: Pull current date and time using library
 current = datetime.now()
 
 # Format date and time output
