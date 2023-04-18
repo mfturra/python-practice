@@ -15,3 +15,6 @@ location = [row, col]
 
 # Modify map list based on user input
 map[location[0]][location[1]] = ['X']
+
+# Print updated map
+print(f"{row1}\n{row2}\n{row3}")
