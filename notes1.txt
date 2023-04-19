@@ -12,3 +12,24 @@ python has an interpreter that reads your code.
 for int i = 0; i < 10; i = i +5 {
     
 }
+
+## Notes on HTTP requests
+Wire transmits light from one point to the other. Receivers and senders communicate what the signals mean.
+Letter contents need to be legible between the sendor and reader.
+
+HTTP request, address systems. Send this letter to this recipient.
+Structure: Verb, URL, headers, meta-data. Returner will send something that's a similar structure as well. 
+Anything that's wrong about it, you'll get an error.
+- Section for Data: Send or receive. GET will send the request. There's no letter. There's just an envelope
+ being sent for more data.
+  When server sees that they send an HTML page. HTML is sent in body of response. Data section.
+
+POST request: Accepted communication, POST request send file to do something with the data.
+- Request is sent to server with data. Filling out data that you want to send to the server.
+HTTP request from client to server.
+
+FLASK request
+Top of file, from flask import request. Data type that takes HTTP request wrap and puts it into a Python 
+type to be used with Python.
+Can be used to get header, and other components.
+
