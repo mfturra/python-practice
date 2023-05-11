@@ -1,3 +1,30 @@
+# 5/4/2023
+## Things to Review
+1. Walk through how HTTP protocols work with headers and body messages. Provide us with examples of how it's used and how to use curl to interact with the terminal while using it. Why do we use the terminal to interact with the client? How is that easier?
+2. How would I use the from_json function to load json data?
+
+Response and Requesrt Router are the inputs.
+- What is a response writer?
+Address
+HTTP handler
+
+### Header (Meta data about request)
+GET: Verb being called | Path
+Host: HTTP version being used.
+Accept: */* 
+Content-Length: Characters for body of message
+Content-Type: application/json
+User-Agent: What sent the request? (Ex: curl/7.82.0)
+Body: Content that's being sent to the server. (Please do something about this)
+
+HTTP Response Codes (mdn web docs): Request API Return code conventions
+
+evaluating dictionary key
+- Key value store: 
+Method: Function that's specific to a type
+- Example: if __ in ___ dict.keys() or value()
+- Update: If the person adds data that wasn't supposed to be added
+
 ## 4/26/2023
 Feature branch: New branch off main would be called videogame branch. 
 
