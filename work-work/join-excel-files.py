@@ -1,6 +1,7 @@
 # Import required modules
 import glob2 # Finds all path names that match a specific pattern
 import pandas as pd
+import warnings
 
 # Specify paths to files
 path = r'C:\Users\MT1070\Desktop\Master Call Volume'
@@ -17,11 +18,14 @@ final_sheet = pd.DataFrame()
 # Iteratively read data extracts and append them to one final df 
 for file in file_names:
     # Combine excel sheets into single df
-    df = pd.concat(pd.read_excel(file, sheet_name=None, skipfooter=2), ignore_index=True, sort=False) # without engine 
+    with warnings.catch_warnings(record=True):
+        warnings.simplefilter("always")
+        df = pd.concat(pd.read_excel(file, sheet_name=None, skipfooter=2, engine='openpyxl'), ignore_index=True, sort=False) # without engine 
+    
     # df = pd.concat(pd.read_excel(file, sheet_name=None, engine='openpyxl'), ignore_index=True, sort=False)
 
-    # Append excel files one by one
-    final_sheet = final_sheet.append(df, ignore_index=True)
+        # Append excel files one by one
+        final_sheet = final_sheet.append(df, ignore_index=True)
 
 
 # Combine data into a new Excel file
