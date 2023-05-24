@@ -37,6 +37,18 @@ git checkout master
 - Regex (to learn)
 - Configuring a local gitignore.
 
+git branch: Provides user with name of current branch
+
+git pull
+- Combination: git fetch and git merge
+- git fetch downloads content from the specified remote repository.
+- git merge, merges the remote content refs and heads into a new local merge commit. 
+- Event Summary: A branch is created to add or fix a feature that's disconnected from the main branch. When creating a new pull request, a new commit is created that merges the commits from the branch with those of the master. 
+
+git pull --rebase
+- Event summary: When a remote commit is behind the local commits, the rebase copies the remote commits to the local origin/main commit history.
+
+
 
 ## Storing in database (UUID)
 - Need unique ID for any new entries.
