@@ -1,3 +1,50 @@
+## 5/17/2022
+Constructor
+Builds object and store them into a variable.
+Line 35: Dictonary 
+
+Make a Class jsonified. 
+
+What's the best way to represent data to the client after they post information.
+
+Create a separate dictionary 
+
+
+
+
+# 5/11/2023
+Own Time Research
+1. What does it mean to serialize data?
+
+### How to kill active port
+ps aux | grep -i flask | awk '{print $2}' | while read line
+do pkill -9 $line
+done
+
+
+
+
+git diff HEAD HEAD~1
+Show me the difference. HEAD and HEAD-1 are different commit hashes.
+
+REST API
+- Server responds in JSON
+
+201 Success and creation 
+
+Build JSON out and return fields. 
+Flask return http status code
+- return Response("{'a':'b'}", status=201, mimetype='applcation)
+- Mimetype/Content-Type: The type of data being sent.
+
+Return 201 success output
+Return 400 error request
+Return 500 internal server error
+
+Be as specific as possible to make sure that 
+
+
+
 # 5/4/2023
 ## Things to Review
 1. Walk through how HTTP protocols work with headers and body messages. Provide us with examples of how it's used and how to use curl to interact with the terminal while using it. Why do we use the terminal to interact with the client? How is that easier?
@@ -39,6 +86,7 @@ git checkout master
 
 git branch: Provides user with name of current branch
 
+# Git pull
 git pull
 - Combination: git fetch and git merge
 - git fetch downloads content from the specified remote repository.
