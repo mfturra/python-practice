@@ -1,4 +1,66 @@
-## 5/17/2022
+## 6/9/2023
+Task: Create UUID type in postgresql database
+- While in your database run the following code:
+  - CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+  - Where IF NOT EXISTS avoids the re-installing of the module.
+- Run the following code to create your table with UUID4
+  - CREATE TABLE videogames(
+      videogame_id uuid DEFAULT uuid_generate_v4(),
+      videogame_title VARCHAR(30) NOT NULL,
+      videogame_platform VARCHAR(30) NOT NULL,
+      videogame_releasedate DATE,
+      videogame_publisher VARCHAR(30)
+      );
+- Alter table to drop default of UUID.
+  - ALTER TABLE public.videogames ALTER COLUMN videogame_id DROP DEFAULT;
+
+### Generate new models.py file with flask-sqlacodegen
+- Run the following script
+  - sqlacodegen postgresql:///media_backlog_api --table TABLENAME --outfile /Users/MT/Desktop/Dev-Ops Work/media-backlog-api-1/models.py
+
+
+## 5/31/2023
+Close branch
+Update 
+
+git branch -D video-game-database-creation (Branch Deletion)
+git pull upstream main
+git push origin main
+
+### Start new branch
+git checkout -b video-game-flask-sql-sql (New branch)
+git cherry-pick
+
+## Commit to database
+
+
+# Long Term Roadmap
+1. Implement VideoGame POST, GET, PATCH, DELETE
+  - Update DB with UUID type
+  - Build JSON after db.session.commit()
+  - Implement release date and publisher for POST
+2. Refactor Flask App for PRD.
+3. Create AWS Cloud resources for app.
+4. Get app running in PRD.
+
+
+
+## 5/25/2023
+SQLAlchemy: Library that's used to interact with different db packets.
+- ORM: Object relational mapper. Has ability to create multiple different backends that translates to the right SQL format.
+
+Flask-sqlcodegen
+Uniform Resource Location: Location to find a website.
+Uniform Resource Identifier (URI): 
+- mysql can be the protocol
+
+Create one entry
+Create models.py with flask-sqlacodegen
+
+config.py file
+
+
+## 5/17/2023
 Constructor
 Builds object and store them into a variable.
 Line 35: Dictonary 
@@ -9,7 +71,13 @@ What's the best way to represent data to the client after they post information.
 
 Create a separate dictionary 
 
-
+## Database Creation and SQLAlchemy Setup
+- Install postgres (using web download page) and flask-sqlalchemy (pip install)
+- Once Postgres is installed and running, create postgres database by running the following in the terminal:
+  - psql -U postgres
+  - CREATE DATABASE database_name; (e.g. media_backlog_api)
+  - Expected entry output: CREATE DATABASE. Explanation: Confirms successful database creation
+- Install alembic, Flask-Script and Flask-Migrate using "pip install" to manage database migrations and update database's schema.
 
 
 # 5/11/2023
