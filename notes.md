@@ -1,4 +1,80 @@
-## 6/9/2023
+## 6/22/2023
+Task: Stand up AWS Instance
+- Change directory to the folder where the key pair is located
+- Secure the key pairs by running the following script: chmod 400 vs-flask-1.cer
+- Run the following scripts to connect to the EC2 server: ssh -i "vs-flask-1.cer" ubuntu@ec2-3-145-72-178.us-east-2.compute.amazonaws.com
+  - Where "vs-flask-1.cer" is the key pair name in quotations. ubuntu@ec2-3-145-72-178.us-east-2.compute.amazonaws.com is the cloud location of the server instance.
+
+vpc: 
+Subnet: Slide of IP addresses to work on
+
+Network ACL
+- Establishes rules for network traffic. Attached at subnet level.
+Security group. Attached at level of EC2 instance
+- All things that I want to accept. 
+
+To Do:
+1. Update security groups with new port range and source
+2. GET/UUID to get one record back, POST, DELETE
+3. Make web application able to run on server.
+4. Run on server with database.
+
+
+
+
+## 6/13/2023
+Understand how the app actually works. 
+
+Addressing a Specific Service
+- Every laptop has an IP address. 127001 is reserved for the device
+- Port number: Different process or program can be run on different ports. 
+  - Review Port number conventions. Registered port numbers.
+  - SSH: Secure Shell run on port 22. Can block port 22
+- IP Address: Building to be sent to. Port is part of the building. 
+
+Domain Name Service (DNS): Protocol that ID's what IP address connects to a specific server.
+
+AWS Explained
+- Data centers are meant to serve websites in a way that's publicly addressable via websites.
+Elastic Compute (EC2)
+  - Instance: CPU will be used.
+  - All code will eventually be run on that server
+- Internal IP Address within router is received
+  - Whatever is controlling the router will address each individual device.
+  - Private networks can be created that physically sit in office.
+  Intranet - Internal internet.
+- Private IP address is required to spin up server.
+
+Virtual private cloud
+- Allowing devices to take to one another.
+
+CIDR: Classless Interdomain Routing - 10.0.0.0/16
+- 4 decimal numbers: IPV4
+ - 4 Different bytes of 8-bit each. 4 numbers are a address.
+- CIDR: 255 x 255 x 255 x 255 available addresses. Devices are all supposed to be within a range, I want them included in my range. Include them in my router. 
+
+Subnet: Explained
+
+Route table Explained
+- Rules for how to route traffic.
+
+
+VPC: Subnets are created that route things differently.
+
+Identity and Access Management (IAM):
+
+Load Balancer: Created in VPC that has IP Address. Special server that's setup by AWS. 
+- Configured in network. When this port is accessed, bring them to another network.
+
+T2.micro (AWS Free Tier)
+- Spin up instance using free tier.
+- Get a flask response over the internet.
+- Curl it over the internet.
+- Key Pair creation and SSH login: Physical SSH key that has a private and public key. 
+
+
+
+## 6/9/2023 to 6/12/2023
 Task: Create UUID type in postgresql database
 - While in your database run the following code:
   - CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
