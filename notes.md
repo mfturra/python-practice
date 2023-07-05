@@ -1,9 +1,146 @@
+## 6/28/2023
+### Creating Pull Requests (PR's)
+
+
+
+## 6/27/2023
+### Creating a RDS PostgreSQL Database on the AWS Free Tier
+Reference: https://www.youtube.com/watch?v=I_fTQTsz2nQ
+
+#### Initial Setup Instructions
+- In search bar, search for RDS, and select the button to Create a Database.
+- Choose standard create option. Select Postgresql engine type.
+- Select Free Tier under Templates section.
+
+Settings Section
+- Update DB instance name: media-backlog-api
+- Update master username: postgres
+- Set master password: Under_Trees
+
+Instance Configuration
+- Utilize: db.t3.micro
+
+Storage
+- General Purpose SSD (gp2)
+- Allocated Storage: 20 GB
+- Disable Storage Autoscaling
+
+Connectivity
+- Default VPC, and Subnet Groups: Default
+- Public Access: Yes
+- Security Group
+  - Choose Existing VPC
+  - Maintain "default" security group
+  - No preference necessary for Availability Zone (AZ)
+  - Database port: 5432
+
+Database Authentication: Password authentication
+
+Initial Database Name: media-backlog-api
+- Disable automated backups
+- Enable encryption
+- Performance Insights: Enabled
+
+Monitoring: Disable
+Maintenance and Others: Default
+
+
+
+## 6/23/2023
+### Working with Postgresql
+Reference: 
+- https://www.codementor.io/@engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb
+- https://www.commandprompt.com/education/different-methods-to-create-a-table-in-postgresql/
+
+
+
+
+### Creating Login
+Log into SQL Server
+- psql postgres
+
+Creating Users (After logging in)
+- CREATE ROLE username WITH LOGIN PASSWORD 'quoted password' [OPTIONS]
+
+Creating a Password
+- \password postgres
+- Next enter password and confirm it.
+
+Creating a Role with a password
+- CREATE ROLE pedro WITH LOGIN PASSWORD 'Starter pack';
+
+### Creating and Managing Databases
+- CREATE DATABASE databasename;
+
+List DB's
+- \l
+
+Choose DB
+- \c databasename
+
+Create a Table
+- CREATE TABLE table_name(
+  id int PRIMARY KEY,
+  name VARCHAR(30));
+
+Show All Tables in Database
+- \d: List all tables in Database
+- \d tablename: Shows table entry structure and types.
+- SELECT * FROM table; Shows all entries inside a table.
+
+
 ## 6/22/2023
-Task: Stand up AWS Instance
+Task: Stand up AWS Instance: https://medium.com/techfront/step-by-step-visual-guide-on-deploying-a-flask-application-on-aws-ec2-8e3e8b82c4f7 
 - Change directory to the folder where the key pair is located
 - Secure the key pairs by running the following script: chmod 400 vs-flask-1.cer
 - Run the following scripts to connect to the EC2 server: ssh -i "vs-flask-1.cer" ubuntu@ec2-3-145-72-178.us-east-2.compute.amazonaws.com
   - Where "vs-flask-1.cer" is the key pair name in quotations. ubuntu@ec2-3-145-72-178.us-east-2.compute.amazonaws.com is the cloud location of the server instance.
+
+### If dependencies haven't been installed yet:
+1. Install Python Virtualenv
+  - sudo apt-get update
+  - sudo apt-get install python3-venv
+
+### Activate virtual environment
+Create directory
+- mkdir media-backlog-api
+- cd media-backlog-api
+
+Create new virtual environment
+- python3 -m venv venv
+
+Activate the virtual environment
+- source venv/bin/activate
+
+Install Flask
+- pip install Flask
+- pip install flask_sqlalchemy
+- sudo apt install libpq-dev (Facilitates psycopg2 install on Ubuntu)
+- pip install psycopg2-binary. This is a drop-in replacement to psycopg2 that eliminates the need for building from source.
+
+### Create basic Flask API
+- sudo nano app.py
+  - Paste app.py script in file.
+  - Paste the following after sqlalchemy library import.
+    - from sqlalchemy.ext.declarative import declarative_base
+  - Define Base and paste Videogame Class after app config section.
+    - Base = declarative_base()
+  - Select Ctrl + O. Save file by selecting Enter.
+  - Exit nano by selecting Ctrl + X
+  - Verify that the file is as it should be by pasting the following: cat app.py
+  - 
+- python app.py (Test whether the app is running)
+
+## Run Gunicorn WSGI server to connect Flask Application
+Install Gunicorn 
+- pip install gunicorn
+
+Run Gunicorn
+- gunicorn -b 0.0.0.0:8000 app:app
+- Exit using: Ctl + C
+
+
+
 
 vpc: 
 Subnet: Slide of IP addresses to work on
