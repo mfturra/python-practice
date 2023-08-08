@@ -54,41 +54,6 @@ Reference:
 
 
 
-
-### Creating Login
-Log into SQL Server
-- psql postgres
-
-Creating Users (After logging in)
-- CREATE ROLE username WITH LOGIN PASSWORD 'quoted password' [OPTIONS]
-
-Creating a Password
-- \password postgres
-- Next enter password and confirm it.
-
-Creating a Role with a password
-- CREATE ROLE pedro WITH LOGIN PASSWORD 'Starter pack';
-
-### Creating and Managing Databases
-- CREATE DATABASE databasename;
-
-List DB's
-- \l
-
-Choose DB
-- \c databasename
-
-Create a Table
-- CREATE TABLE table_name(
-  id int PRIMARY KEY,
-  name VARCHAR(30));
-
-Show All Tables in Database
-- \d: List all tables in Database
-- \d tablename: Shows table entry structure and types.
-- SELECT * FROM table; Shows all entries inside a table.
-
-
 ## 6/22/2023
 Task: Stand up AWS Instance: https://medium.com/techfront/step-by-step-visual-guide-on-deploying-a-flask-application-on-aws-ec2-8e3e8b82c4f7 
 - Change directory to the folder where the key pair is located
@@ -218,11 +183,11 @@ Task: Create UUID type in postgresql database
   - Where IF NOT EXISTS avoids the re-installing of the module.
 - Run the following code to create your table with UUID4
   - CREATE TABLE videogames(
-      videogame_id uuid DEFAULT uuid_generate_v4(),
-      videogame_title VARCHAR(30) NOT NULL,
-      videogame_platform VARCHAR(30) NOT NULL,
+      videogame_id SERIAL PRIMARY KEY,
+      videogame_title VARCHAR(60) NOT NULL,
+      videogame_platform VARCHAR(60) NOT NULL,
       videogame_releasedate DATE,
-      videogame_publisher VARCHAR(30)
+      videogame_publisher VARCHAR(60)
       );
 - Alter table to drop default of UUID.
   - ALTER TABLE public.videogames ALTER COLUMN videogame_id DROP DEFAULT;
