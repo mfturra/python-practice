@@ -28,17 +28,28 @@ if grading_program:
         "Draco": 74,
         "Neville": 62,
         }
-    
+    # assign empty dict
+    student_grades = {}
+
+    # iterate through student_scores and store respective values with grade in student_grades
     for keys in student_scores:
+        # Scores 90 - 100: Grade = "Outstanding"
         if student_scores[keys] >= 91:
-            student_scores[keys] = 'Outstanding'
-        elif student_scores[keys] < 91 and student_scores >= 81:
-            student_scores = 'Exceeds Expectations'
+            student_grades[keys] = 'Outstanding'
+        
+        # Scores 81 - 90: Grade = "Exceeds Expectations"
+        elif student_scores[keys] < 91 and student_scores[keys] >= 81:
+            student_grades[keys] = 'Exceeds Expectations'
+        
+        # Scores 71 - 80: Grade = "Acceptable"
+        elif student_scores[keys] <= 80 and student_scores[keys] >= 71:
+            student_grades[keys] = 'Acceptable'
+        
+        # Scores 70 or lower: Grade = "Fail"
+        elif student_scores[keys] <= 70:
+            student_grades[keys] = 'Fail'
+        else:
+            continue
 
-    print(student_scores)
-# Scores 81 - 90: Grade = "Exceeds Expectations"
-
-# Scores 71 - 80: Grade = "Acceptable"
-
-# Scores 70 or lower: Grade = "Fail"
+    print(f'{student_grades}')
 
