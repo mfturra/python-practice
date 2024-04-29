@@ -19,7 +19,7 @@ if BMI_calc:
     print(f'\nYour BMI value is: {BMI_value}')
 
 # problem #22, day 9
-grading_program = True
+grading_program = False
 if grading_program:
     student_scores = {
         "Harry": 81,
@@ -53,3 +53,39 @@ if grading_program:
 
     print(f'{student_grades}')
 
+
+# problem #23, day 9
+dict_in_list = True
+if dict_in_list:
+    country = input('Please name the country that you visited: ') # Add country name
+    visits = int(input('Please input the number of places that you visited: ')) # Number of visits
+    list_of_cities = eval(input('Please list out the number of cities that you visited separating it with a comma: ')) # create list from formatted string
+
+    travel_log = [
+    {
+        "country": "France",
+        "visits": 12,
+        "cities": ["Paris", "Lille", "Dijon"]
+    },
+    {
+        "country": "Germany",
+        "visits": 5,
+        "cities": ["Berlin", "Hamburg", "Stuttgart"]
+    },
+    ]
+
+    def add_new_country(country, times_visits, cities_visited):
+        extended_trip = {}
+        extended_trip = {
+            'country': country,
+            'visits': times_visits,
+            'cities': cities_visited,
+        }
+
+        # Modify dictionary by adding new country's entries 
+        travel_log.append(extended_trip)
+
+    # function output
+    add_new_country(country, visits, list_of_cities)
+    print(f"I've been to {travel_log[2]['country']} {travel_log[2]['visits']} times.")
+    print(f"My favorite cities were {travel_log[2]['cities'][0]}.")
