@@ -1,4 +1,3 @@
-# TO DO: Create functions that simulate addition, subtraction, and multiplication
 # addition func
 def add(n1, n2):
     '''Receives two inputs and adds them'''
@@ -23,97 +22,55 @@ def divide(n1, n2):
     # output values using return function
     return n1 / n2
 
-
-# TO DO: prompt user for numbers
-user_n1 = float(input("\nWhat's the first number?: "))
-
-
-# TO DO: Build function that uses dictionary operations to perform calculations. Starting with multiply
-# check if operation is in operation_dict
-def operation_matrix(input1):
+def master_calculator():
     '''Use users numerical values and operation of choice along with the operational dictionary to
-    perform the necessary calculations. Print output of operation so that the user can visualize the arithmetic that's taking place programmatically.'''
-    
+        perform the necessary calculations. Print output of operation so that the user can visualize the arithmetic that's taking place programmatically.'''
+    accumulate_val = True
+
     # Store functions into dictionary based on specific operators
     operation_dict = {'+': add,
-                      '-': subtract,
-                      '*': multiply,
-                      '/': divide}
+                    '-': subtract,
+                    '*': multiply,
+                    '/': divide}
+    # request first input value
+    input1 = float(input("\nWhat's the first number?: "))
 
-    # Output available operator options
-    input_operation_opts = "\n+ \n- \n* \n/"
-    print(input_operation_opts)
+    # continue calculating value as long as the user wants to accumulate values
+    while accumulate_val:
 
-    # Prompt user for additional operations and values
-    user_operation = input("Pick an operation: ")
-    input2 = float(input("What's the second number?: "))
-    
-    if user_operation in operation_dict:
-        # pull function from dict
-        operation_choice = operation_dict[user_operation](input1, input2)
+        # cycle through all operator options in dict
+        for symbol in operation_dict:
+            # output only available operators to user 
+            print(symbol)
 
-        # operation found in dict should be used to modify user inputs
-        print(f"{input1} {user_operation} {input2} = {operation_choice}\n")
-        return operation_choice
+        # Prompt user for additional operations and values
+        user_operation = input("Pick an operation: ")
+        input2 = float(input("What's the second number?: "))
+        
+        # check if operation is in operation_dict
+        if user_operation in operation_dict:
+            # pull function from dict and pass respective inputs to finalize calc
+            operation_answer = operation_dict[user_operation](input1, input2)
 
-    else:
-        print("Your operator selection isn't an option. Please select one of the available options")
+            # produce output of calculation to user  
+            print(f"{input1} {user_operation} {input2} = {operation_answer}\n")
+            
+            # if more calcs requested, proceed with another round of questions
+            next_choice = input(f"Type 'y' to continue calculating with {operation_answer}, or type 'n' to start a new calculation: ")
 
-# store output into operational_output var
-operational_output = operation_matrix(user_n1)
+            if next_choice == 'y':
+                input1 = operation_answer
 
-# TO DO: Prompt user for more calculations
-cont_operation_status = str(input(f"Type 'y' to continue calculating with {operational_output}, or type 'n' to start a new calculation: "))
+            else:
+                # if reset of values is requested, then reset first input number
+                accumulate_val = False
 
-# if more calcs requested, proceed with another round of questions
-if cont_operation_status == 'y':
-    new_output = operation_matrix(operational_output)
-    
-    cont_operation_status = str(input(f"Type 'y' to continue calculating with {new_output}, or type 'n' to start a new calculation: "))
+                # start func from start user wants to reset calc
+                master_calculator()
 
-elif cont_operation_status == 'n':
-    user_n1 = float(input("\nWhat's the first number?: "))
+        else:
+            # error track in case user provides operator that isn't available
+            print("Your operator selection isn't an option. Please select one of the available options.")
 
-    operational_output = operation_matrix(user_n1)
-    
-
-# # TO DO: Build workflow that, depending on the operator picked, it'll output a modified value 
-# if user_operation == "+":
-#     input_mod = add
-
-#     # store value of operation in new calc_output
-#     calc_output = input_mod(user_n1, user_n2)
-    
-#     # output operation taking place based on inputs
-#     print(f"{user_n1} + {user_n2} = {calc_output}\n")
-
-# elif user_operation == "-":
-#     input_mod = subtract
-
-#     # store value of operation in new calc_output
-#     calc_output = input_mod(user_n1, user_n2)
-
-#     # output operation taking place based on inputs
-#     print(f"{user_n1} - {user_n2} = {calc_output}\n")
-
-
-# elif operation_dict == 'x':
-#     input_mod = multiply
-
-#     # store value of operation in new calc_output
-#     calc_output = input_mod(user_n1, user_n2)
-
-#     # output operation taking place based on inputs
-#     print(f"{user_n1} * {user_n2} = {calc_output}\n")
-
-
-# elif user_operation == '/':
-#     input_mod = divide
-
-#     # store value of operation in new calc_output
-#     calc_output = input_mod(user_n1, user_n2)
-
-#     # output operation taking place based on inputs
-#     print(f"{user_n1} * {user_n2} = {calc_output}\n")
-
-
+# initiate master_calculator function for user to input respective values
+master_calculator()
