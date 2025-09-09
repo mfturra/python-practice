@@ -17,6 +17,7 @@ class ChromeTestCase(unittest.TestCase):
         self.driver.get('https://selenium.dev/documentation')
         # WebDriverWait(self.driver, 2).until(EC.title_contains("MDN Web Docs"))
         self.assertIn('Selenium', self.driver.title)
+        time.sleep(5)
     
     def test_page_click_article(self):
         # self.driver.get("https://developer.mozilla.org/en-US/")
@@ -37,7 +38,7 @@ class ChromeTestCase(unittest.TestCase):
         # tile_elements = self.driver.find_element(By.CLASS_NAME, 'tile-container')
         # elem = self.driver.find_element(By.CLASS_NAME, 'article-tile')
         # elem.click()
-        time.sleep(2)
+        time.sleep(5)
     
     def test_account_login(self):
         self.driver.find_element(By.NAME, "email").send_keys("hello@gmail.com")
@@ -54,6 +55,7 @@ class ChromeTestCase(unittest.TestCase):
 
         # store successful account creation text into a message var
         message = self.driver.find_element(By.CLASS_NAME, "alert-success").text
+        time.sleep(5)
         print(message)
         assert "Success" in message
 

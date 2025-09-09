@@ -1,0 +1,4 @@
+Okta OAuth Page Load Metrics
+FCP (ms),TTI (ms),TTFB (ms),LET (ms),DCL (ms)
+620,595,292,652,595
+
